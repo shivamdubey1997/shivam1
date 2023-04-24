@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Fixed top navbar example for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-fixed/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+
+
+</head>
+<style>
+ /*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+:root{
+   --crimson:crimson;
+   --black:#333;
+   --white:#fff;
+   --light-black:#666;
+   --light-bg:#eee;
+   --dark-bg:rgba(0,0,0,.7);
+   --border:1px solid #999;
+   --box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+*{
+   font-family: 'Poppins', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: all .2s linear;
+}
+
+body{
+   background-color: var(--light-bg);
+}
+
+::-webkit-scrollbar{
+   width: 10px;
+}
+
+::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+   background-color: var(--black);
+}
+
+.heading{
+   margin-bottom: 20px;
+   font-size: 30px;
+   color:var(--black);
+   text-transform: uppercase;
+   text-align: center;
+}
+
+.btn{
+   margin-top: 10px;
+   display: inline-block;
+   padding:10px 30px;
+   cursor: pointer;
+   font-size: 17px;
+   background-color: var(--light-bg);
+   color:var(--black);
+   text-transform: capitalize;
+   text-align: center;
+}
+
+.btn:hover{
+   background-color: var(--crimson);
+   color:var(--white);
+}
+
+.gallery{
+   padding:20px;
+   text-align: center;
+   padding-left: 320px;
+}
+
+.gallery .image-container{
+   gap:15px;
+   columns:3 350px;
+
+}
+
+.gallery .image-container video{
+   break-inside: avoid;
+   width: 100%;
+   background-color: var(--white);
+   object-fit: cover;
+   cursor: pointer;
+   margin-bottom: 10px;
+   margin-left:0px;
+   box-shadow: var(--box-shadow);
+}
+
+.gallery .image-container video:hover{
+   transform: scale(.95);
+}
+
+.side-bar{
+   height: 100vh;
+   width: 300px;
+   position: fixed;
+   top:0; left:0;
+   z-index: 1000;
+   background-color: var(--white);
+   padding:20px;
+   border-right: var(--border);
+   overflow-y: scroll;
+}
+
+.side-bar::-webkit-scrollbar{
+   width: 5px;
+}
+
+.side-bar .box{
+   border-bottom: var(--border);
+   padding:20px 0;
+}
+
+.side-bar .box .title{
+   margin-bottom: 10px;
+   color:var(--black);
+   font-size: 20px;
+   text-transform: uppercase;
+}
+
+.side-bar .btn{
+   margin-left: 5px;
+}
+
+.side-bar .btn.active{
+   background-color: var(--crimson);
+   color:var(--white);
+}
+
+.side-bar .box #search-box{
+   border:var(--border);
+   padding:12px;
+   text-transform: none;
+   color:var(--light-black);
+   width: 100%;
+   font-size: 17px;
+}
+
+.side-bar .reset-btn .btn{
+   margin-top: 20px;
+   width: 100%;
+}
+
+#side-menu{
+   position: fixed;
+   top:20px; left:20px;
+   height: 50px;
+   width: 50px;
+   line-height: 50px;
+   text-align: center;
+   background-color: var(--white);
+   color:var(--black);
+   cursor: pointer;
+   font-size: 25px;
+   z-index: 1100;
+   box-shadow: var(--box-shadow);
+   border:var(--border);
+   display: none;
+}
+
+.image-popup{
+   position: fixed;
+   top:0; left:0;
+   z-index: 1200;
+   background-color: var(--dark-bg);
+   height: 100vh;
+   width: 100%;
+   display: none;
+   align-items: center;
+   justify-content: center;
+   padding:100px 20px;
+   overflow-y: scroll;
+}
+
+.image-popup img{
+   width:600px;
+   cursor: pointer;
+   border:10px solid var(--white);
+   background-color: var(--white);
+}
+
+
+
+
+
+@media (max-width:1200px){
+
+   .gallery{
+      padding-left: 20px;
+   }
+
+   #side-menu{
+      display: block;
+   }
+
+   #side-menu.fa-times{
+      top:0;
+      left: 300px;
+   }
+
+   .side-bar{
+      left: -350px;
+   }
+
+   .side-bar.active{
+      box-shadow: 0 0 0 100vw var(--dark-bg);
+      left:0;
+      z-index: 1000;
+   }
+
+}
+
+@media (max-width:768px){
+
+   .image-popup img{
+      width: 100%;
+   }
+
+}
+
+@media (max-width:450px){
+
+   #side-menu.fa-times{
+      top:10px;
+      left: 10px;
+   }
+
+   .side-bar.active{
+      padding-top: 70px;
+   }
+
+}
+.avatar {
+
+  margin-left:-210px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+</style>
+<script>
+   $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+
+
+
+            let sideMenu = document.querySelector('#side-menu');
+let sideBar = document.querySelector('.side-bar');
+
+sideMenu.onclick = () =>{
+   sideMenu.classList.toggle('fa-times');
+   sideBar.classList.toggle('active');
+};
+
+let galleryImages = document.querySelectorAll('.image-container img');
+let imagePop = document.querySelector('.image-popup');
+
+galleryImages.forEach(img =>{
+   img.onclick = () =>{
+      let imageSrc = img.getAttribute('src');
+      imagePop.style.display = 'flex';
+      imagePop.querySelector('img').src = imageSrc;
+   };
+});
+
+imagePop.onclick = () =>{
+   imagePop.style.display = 'none';
+};
+
+document.querySelector('#search-box').oninput = () =>{
+   var value = document.querySelector('#search-box').value.toLowerCase();
+   galleryImages.forEach(img =>{
+      var filter = img.getAttribute('data-search').toLowerCase();
+      if(filter.indexOf(value) > -1){
+         img.style.display = 'block';
+      }else{
+         img.style.display = 'none';
+      };
+   });
+};
+
+let categoryBtn = document.querySelectorAll('.category .btn');
+
+categoryBtn.forEach(btn =>{
+   btn.onclick = () =>{
+      categoryBtn.forEach(remove => remove.classList.remove('active'));
+      let dataCategory = btn.getAttribute('data-category');
+      galleryImages.forEach(img =>{
+         var imgCat = img.getAttribute('data-cat');
+         if(dataCategory == 'all'){
+            img.style.display = 'block';
+         }else if(dataCategory == imgCat){
+            img.style.display = 'block';
+         }else{
+            img.style.display = 'none';
+         }
+      });
+      btn.classList.add('active');
+   };
+});
+
+let typeBtn = document.querySelectorAll('.type .btn');
+
+typeBtn.forEach(btn =>{
+   btn.onclick = () =>{
+      typeBtn.forEach(remove => remove.classList.remove('active'));
+      let datatype = btn.getAttribute('data-type');
+      galleryImages.forEach(img =>{
+         var imgtype = img.getAttribute('src').split('.').pop();
+         if(datatype == 'all'){
+            img.style.display = 'block';
+         }else if(datatype == imgtype){
+            img.style.display = 'block';
+         }else{
+            img.style.display = 'none';
+         }
+      });
+      btn.classList.add('active');
+   };
+});
+
+document.querySelector('.reset-btn .btn').onclick = () =>{
+   window.location.reload();
+};
+</script>
+<body>
+ <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Choose Your Workouts</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <a href="/uploadworkout">  <p>Upload My Wokout</p></a>
+                 <a href="/">  <p>Go To Homepage</p></a>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Day</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="/workoutsmonday">Monday</a>
+                        </li>
+                        <li>
+                            <a href="/workoutstuesday">Tuesday</a>
+                        </li>
+                        <li>
+                            <a href="/workoutswednesday">Wednesday</a>
+                        </li>
+                        <li>
+                            <a href="/workoutsthursday">Thrusday</a>
+                        </li>
+                        <li>
+                            <a href="/workoutsfriday">Friday</a>
+                        </li>
+                         <li>
+                            <a href="/workoutssaturday">Saturday</a>
+                        </li>
+                         <li>
+                            <a href="/workoutssunday">Sunday</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Muscle</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="/arms">Arms</a>
+                        </li>
+                        <li>
+                            <a href="/back">Back</a>
+                        </li>
+                        <li>
+                            <a href="/biceps">Bicepes</a>
+                        </li>
+                        <li>
+                            <a href="/chest">Chest</a>
+                        </li>
+                        <li>
+                            <a href="/triceps">Triceps</a>
+                        </li>
+                        <li>
+                            <a href="/shoulders">Shoulders</a>
+                        </li>
+                        <li>
+                            <a href="/legs">Legs</a>
+                        </li>
+                        <li>
+                            <a href="/abscore">Abs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="aa">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/bodyweightworkout">Bodyweight Exercise</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href=""> 30 Day Transformation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Healthy Recepies</a>
+                            </li>
+                            <li>
+                                <form class="nav-link" method="get" >
+                                     <input type="text" name="servicenamee" value="" />
+                                    <input type="submit" value="Search" />
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!--
+ <div class="gallery">
+
+   <h1 class="heading">image gallery</h1>
+
+   <div class="image-container">
+        {% for x in workoutvideos %}
+
+  <a href="/viewactualgallery/{{x.id}}">
+      <video class="embed-responsive embed-responsive-16by9" controls="controls"  width="200" height="300" >
+      <source src="{{x.video.url}}" type="video/mp4" />
+
+      </video>
+  </a>
+
+{% endfor %}
+   </div>
+
+</div>
+
+<div class="image-popup">
+   <img src="" alt="">
+</div> -->
+            <h1>hello</h1>
+            <div class="row">
+                 {% for x in video %}
+  <div class="col-sm-6" style="margin-top:10px;">
+
+    <div class="card">
+      <div class="card-body">
+           <video class="embed-responsive embed-responsive-16by9" controls="controls"  width="200" height="300" >
+      <source src="{{x.video.url}}" type="video/mp4" />
+
+      </video>
+        <h5 class="card-title">{{x.titleofvideo}}</h5>
+        <p class="card-text">{{x.dietdescription}}</p>
+        <a href="/viewvideo/{{x.id}}" class="btn btn-primary">View Full Video</a>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+            </div>
+<script src="js/script.js"></script>        </div>
+    </div>
+</body>
+</html>

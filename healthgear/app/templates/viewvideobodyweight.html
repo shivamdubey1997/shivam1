@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    <style>
+    *{
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        text-transform: capitalize;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: normal;
+    }
+    .heading{
+        color: #444;
+        font-size: 40px;
+        text-align: center;
+        padding: 10px;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 15px;
+        align-items: flex-start;
+        padding: 5px 5%;
+    }
+    .container .main-video{
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+
+    }
+    .container .main-video video{
+        width: 100%;
+        border-radius: 5px;
+        height: 500px;
+    }
+    .container .main-video .title{
+        color: #333;
+        font-size: 23px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+    }
+    .container .video-list{
+        background: #fff;
+        border-radius: 5px;
+        height: 520px;
+        overflow-y: scroll;
+    }
+    .container .video-list .vid video{
+          width: 100px;
+          border-radius: 5px;
+    }
+    .container .video-list::-webkit-scrollbar{
+        width: 7px;
+    }
+    .container .video-list::-webkit-scrollbar-track{
+       background: #ccc;
+       border-radius: 50px;
+    }
+    .container .video-list::-webkit-scrollbar-thumb{
+       background: #666;
+       border-radius: 50px;
+    }
+    .container .video-list .vid{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: #f7f7f7;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, .1);
+        cursor: pointer;
+    }
+    .container .video-list .vid:hover{
+        background: #eee;
+
+    }
+    .container .video-list .vid.active{
+        background: #2980b9;
+
+
+    }
+    .container .video-list .vid.active .title{
+        color: #fff;
+
+
+    }
+    .container .video-list .vid .title{
+        color: #333;
+        font-size: 17px;
+
+
+    }
+    @media (max-width:991px){
+        .container{
+
+        grid-template-columns: 1.5fr 1fr;
+
+        padding:10px;
+    }
+}
+    @media (max-width:768px){
+        .container{
+
+        grid-template-columns: 1fr;
+
+
+    }
+    }
+
+  .avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#more {display: none;}
+</style>
+</style>
+<body>
+<div class="container">
+    <div class="main-video">
+        <div class="video">
+        <video src="{{video.bodyvideo.url}}" controls muted autoplay height="500px" width="600px"></video>
+            {% if request.user not in video.ping.all %}
+
+             <a href="/like/{{video.id}}"> <button style="font-size:25px;">Like</button></a> {{video.bodylikes.count}}
+
+            {% else %}
+            <a href="/like/{{video.id}}"> <button style="font-size:25px;">Dislike</button></a> {{video.bodylikes.count}}
+            {% endif %}
+              <h1>  View on Video </h1>  <h2>{{video.viewss}}    </h2>
+<p style="font-size:25px;">{{video.titleofvideo}}<span id="dots">... </span>
+            <h1>  <span id="more">{{video.dietdescription}}</span> </h1>
+            <h1>  <span id="more">{{video.country}}</span> </h1>
+
+
+            </p>
+<button onclick="myFunction()" id="myBtn">Read more</button>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<script>
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+</script>
+</body>
+</html>

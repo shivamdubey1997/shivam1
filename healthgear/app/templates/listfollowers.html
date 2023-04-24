@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for follower in followers %}
+<h1>{{follower.profile}}</h1>
+<img  height="60" width="60" src="{{follower.profile.profile_picture.url}}">
+<a href="/profileofollowers/{{follower.profile.id}}">@{{follower.username}}</a>
+<!-- /userprofile/{{follower.profile.id}} -->
+
+
+{% endfor %}
+</body>
+</html>
